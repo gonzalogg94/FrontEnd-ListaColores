@@ -2,10 +2,12 @@
 import ItemColor from './ItemColor';
 import {ListGroup} from 'react-bootstrap';
 
-const ListaColores = () => {
+const ListaColores = ({ArregloColores,borrarColor}) => {
     return (
         <ListGroup>
-      <ItemColor></ItemColor>
+            {
+                ArregloColores.map((color,posicion)=><ItemColor key={posicion} nombreColor={color} borrarColor={borrarColor}></ItemColor>)
+            }
     </ListGroup>
     );
 };

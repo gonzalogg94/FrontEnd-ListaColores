@@ -5,8 +5,8 @@ import FormularioColores from "./components/FormularioColores";
 function App() {
   return (
     <Container className='my-5 text-center'>
-      <div className="text-center">
-      <h1 className='fs-1'>Elegir colores</h1>
+      <div  className="text-center">
+      <h1  className='fs-1'>Elegir colores</h1>
       <hr />
       </div>
       <FormularioColores></FormularioColores>
