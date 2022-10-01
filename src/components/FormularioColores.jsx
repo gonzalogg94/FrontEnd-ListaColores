@@ -1,20 +1,25 @@
 import ListaColores from "./ListaColores";
 import { Form, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const FormularioColores = () => {
+  const coloresLocalStorage =JSON.parse(localStorage.getItem("arregloColoresKey")) || [];
   const [color, setcolor] = useState("");
-  const [ArregloColores, setArregloColores] = useState([]);
+  const [ArregloColores, setArregloColores] = useState(coloresLocalStorage);
+
+  useEffect(() => {
+    localStorage.setItem("arregloColoresKey", JSON.stringify(ArregloColores));
+  }, [ArregloColores]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setArregloColores([...ArregloColores, color]);
     setcolor("");
   };
-  const borrarColor=(nombre)=>{
-    let arregloModificado=ArregloColores.filter((item)=>(item!==nombre));
+  const borrarColor = (nombre) => {
+    let arregloModificado = ArregloColores.filter((item) => item !== nombre);
     setArregloColores(arregloModificado);
-  }
+  };
 
   return (
     <div>
@@ -34,7 +39,10 @@ const FormularioColores = () => {
           </Button>
         </Form.Group>
       </Form>
-      <ListaColores ArregloColores={ArregloColores} borrarColor={borrarColor}></ListaColores>
+      <ListaColores
+        ArregloColores={ArregloColores}
+        borrarColor={borrarColor}
+        ></ListaColores>
     </div>
   );
 };

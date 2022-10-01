@@ -17,5 +17,4 @@ const ItemColor = ({nombreColor,borrarColor}) => {
     </Row>
   );
 };
-
 export default ItemColor;
