@@ -1,14 +1,15 @@
-import ItemColor from "./ItemColor";
-import { ListGroup } from "react-bootstrap";
 
-const ListaColores = ({ ArregloColores, borrarColor }) => {
+import ItemColor from "./ItemColor";
+import ListGroup from "react-bootstrap/ListGroup";
+
+const ListaColores = ({ color, setColores }) => {
   return (
     <ListGroup>
-      {ArregloColores.map((color, posicion) => (
+      {color.map((color) => (
         <ItemColor
-          key={posicion}
-          nombreColor={color}
-          borrarColor={borrarColor}
+          key={color._id}
+          color={color}
+          setColores={setColores}
         ></ItemColor>
       ))}
     </ListGroup>
@@ -16,3 +17,4 @@ const ListaColores = ({ ArregloColores, borrarColor }) => {
 };
 
 export default ListaColores;
+
